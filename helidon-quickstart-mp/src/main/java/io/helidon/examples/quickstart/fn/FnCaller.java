@@ -9,7 +9,8 @@ import java.net.URL;
 public class FnCaller {
 
     public static void callFn(String trigger) throws IOException {
-        URL url = new URL("http://localhost:8080/t/helidon/" + trigger);
+        String fnEndpoint = System.getenv("FN_INVOKE_ENDPOINT");
+        URL url = new URL(fnEndpoint + trigger);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));

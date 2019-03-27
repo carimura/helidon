@@ -103,7 +103,7 @@ public class GreetResource {
         FnCaller fn = new FnCaller();
         
         try {
-            fn.callFn();
+            fn.callFn("hello-trigger");
         } catch(IOException exception) {
             throw exception;
         } 

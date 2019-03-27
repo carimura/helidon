@@ -8,8 +8,8 @@ import java.net.URL;
 
 public class FnCaller {
 
-    public static void callFn() throws IOException {
-        URL url = new URL("http://localhost:8080/t/helidon/hello-trigger");
+    public static void callFn(String trigger) throws IOException {
+        URL url = new URL("http://localhost:8080/t/helidon/" + trigger);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));

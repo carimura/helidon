@@ -18,11 +18,11 @@ Bonus: you can just `fn deploy` functions as opposed to redeploying the Helidon 
 
 Note: This doesn't use the Fn Java SDK which is not in a great state at the moment. Will use that next for a fresher cleaner feeling.
 
-You'll also need the following code:
+You'll also need the following code if you want to run the whole shebang:
 
 http://github.com/carimura/giphyfn
 
-http://github.com/carimnura/tools/slack
+https://github.com/carimura/tools/tree/master/slack/post-to-slack
 
 Here's a short video of me talking to a robot:
 

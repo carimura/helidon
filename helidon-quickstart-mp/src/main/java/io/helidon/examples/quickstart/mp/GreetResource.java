@@ -8,6 +8,7 @@ import javax.json.Json;
 import javax.json.JsonBuilderFactory;
 import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,6 +17,12 @@ import javax.ws.rs.core.MediaType;
 @Path("/greet")
 @RequestScoped
 public class GreetResource {
+
+    @Path("/")
+    @GET
+    public JsonObject greetGet() throws IOException {
+        return JSON.createObjectBuilder().add("hello", "Chad").build();
+    }
 
     private static final JsonBuilderFactory JSON = Json.createBuilderFactory(Collections.emptyMap());
 
@@ -28,12 +35,12 @@ public class GreetResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject homeEndpointGet(JsonObject j) throws IOException {
+    public JsonObject homeEndpoint(JsonObject j) throws IOException {
         FnCaller fn = new FnCaller();
 
         String input = "cats";
 
-        System.out.println("Input from Google Home --> " + j);
+        System.out.println("Complete input (probably from Google Home) --> " + j);
 
         if ((j.getJsonObject("queryResult") != null)
                 && (j.getJsonObject("queryResult").getJsonObject("parameters") != null)
@@ -41,7 +48,7 @@ public class GreetResource {
             input = j.getJsonObject("queryResult").getJsonObject("parameters").getJsonString("searchPhrase").toString();
         }
 
-        System.out.println("Input is --> " + input);
+        System.out.println("Input var prepared for flow --> " + input);
 
         try {
             fn.callFn("giphyfn/flow", input);

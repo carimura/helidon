@@ -29,7 +29,7 @@ Here's a short video of me talking to a robot:
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/zy0NCNVcNhQ/0.jpg)](https://www.youtube.com/watch?v=zy0NCNVcNhQ)
 
 ## Running Google Home Endpoint
-If Changes: `maven package`
+If Changes: `mvn package`
 
 To Run: `java -jar target/helidon-quickstart-mp.jar`
 
